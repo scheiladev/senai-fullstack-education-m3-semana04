@@ -21,8 +21,8 @@ A aplicação será composta apenas por:
 
 - Inicie um novo projeto Angular utilizando o Angular CLI.
 - No projeto Angular, utilize o Angular CLI para criar os seguintes itens:
-    1. Um service que fará as chamadas ao backend.
-    2. Três componentes de elementos que serão utilizados dentro das páginas.
+  1. Um service que fará as chamadas ao backend.
+  2. Três componentes de elementos que serão utilizados dentro das páginas.
 
 ### M3S04 | Ex 2 - Desenvolvimento de Componentes
 
@@ -32,7 +32,7 @@ A aplicação será composta apenas por:
 
 - Crie um componente para listagem no formato desejado. Este componente deve receber um array de objetos e converter esses dados em uma listagem visualmente atrativa.
 - Crie um componente de cabeçalho que deve incluir apenas o título “Caixa de sugestões”.
-- Crie um componente de rodapé que exiba a frase “Desenvolvido por {seu\_nome}”. No rodapé, o {seu\_nome} deve ser um link que redireciona para o seu perfil no GitHub.
+- Crie um componente de rodapé que exiba a frase “Desenvolvido por {seu_nome}”. No rodapé, o {seu_nome} deve ser um link que redireciona para o seu perfil no GitHub.
 
 ### M3S04 | Ex 3 - Desenvolvimento da Tela de Listagem
 
@@ -42,9 +42,9 @@ A aplicação será composta apenas por:
 
 - Implemente a chamada ao backend no service criado anteriormente para obter a lista de sugestões.
 - Desenvolva a tela de listagem utilizando o componente de cards criado. Cada card deve exibir:
-    - Título da sugestão.
-    - Descrição.
-    - Data de criação da sugestão (no formato dd/MM/yyyy).
+  - Título da sugestão.
+  - Descrição.
+  - Data de criação da sugestão (no formato dd/MM/yyyy).
 - Além da listagem na tela também deverá ter um título e uma barra de pesquisa que irá pesquisar por título.
 
 ### M3S04 | Ex 4 - Desenvolvimento do modal de comentários
@@ -56,9 +56,9 @@ A aplicação será composta apenas por:
 - Implemente a chamada ao backend no service criado anteriormente para obter a sugestão selecionada e seus comentários.
 - Desenvolva o modal utilizando seu conhecimento em CSS e HTML, poderá também ser utilizado alguma biblioteca de componentes para criar o modal.
 - No modal ele deverá possuir os seguintes elementos:
-    - Um título indicando qual a sugestão selecionada.
-    - A descrição, a data de criação e a última data de atualização (atributo alterado a cada novo comentário).
-    - Mais abaixo crie uma nova seção com um título escrito “comentários”, nesta seção deverá conter um botão salvar comentário, um campo de textarea e, abaixo do campo de textarea, todos os comentários associados a aquela sugestão.
+  - Um título indicando qual a sugestão selecionada.
+  - A descrição, a data de criação e a última data de atualização (atributo alterado a cada novo comentário).
+  - Mais abaixo crie uma nova seção com um título escrito “comentários”, nesta seção deverá conter um botão salvar comentário, um campo de textarea e, abaixo do campo de textarea, todos os comentários associados a aquela sugestão.
 
 ### M3S04 | Ex 5 - Feedback e validações
 
