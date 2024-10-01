@@ -1,1 +1,7 @@
-<p>sugestoes works!</p>
+<app-header />
+<main>
+  @for (sugestao of listaSugestoes; track $index) {
+  <app-card [elemento]="sugestao" />
+  }
+</main>
+<app-footer />
