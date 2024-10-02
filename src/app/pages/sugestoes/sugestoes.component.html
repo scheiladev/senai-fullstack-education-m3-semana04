@@ -1,7 +1,24 @@
 <app-header />
 <main>
-  @for (sugestao of listaSugestoes; track $index) {
-  <app-card [elemento]="sugestao" />
-  }
+  <fieldset>
+    <legend>Buscar sugestões</legend>
+    <input
+      type="text"
+      id="search"
+      name="search"
+      placeholder="Buscar por título"
+      [(ngModel)]="textoPesquisa"
+    />
+    <button mat-flat-button type="button" (click)="search()">
+      <mat-icon>search</mat-icon>
+      Pesquisar
+    </button>
+  </fieldset>
+
+  <section>
+    @for (sugestao of listaSugestoes; track $index) {
+    <app-card [elemento]="sugestao" />
+    }
+  </section>
 </main>
 <app-footer />
