@@ -9,15 +9,15 @@
       placeholder="Buscar por título"
       [(ngModel)]="textoPesquisa"
     />
-    <button mat-flat-button type="button" (click)="search()">
-      <mat-icon>search</mat-icon>
-      Pesquisar
-    </button>
+    <button mat-flat-button type="button" (click)="search()">Pesquisar</button>
   </fieldset>
 
   <section>
-    @for (sugestao of listaSugestoes; track $index) {
-    <app-card [elemento]="sugestao" />
+    @if (listaSugestoes.length > 0) { @for (sugestao of listaSugestoes; track
+    sugestao.id) {
+    <app-card [elemento]="sugestao" (click)="openModal(sugestao.id)" />
+    } } @else {
+    <p>Nenhuma sugestão.</p>
     }
   </section>
 </main>

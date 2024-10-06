@@ -12,11 +12,14 @@
   }
 
   p {
-    padding: 16px 0;
-    font-style: italic;
+    padding: 16px 0 4px;
   }
 
-  span {
-    font-size: 14px;
+  div {
+    text-align: right;
+
+    span {
+      font-size: 10px;
+    }
   }
 }
