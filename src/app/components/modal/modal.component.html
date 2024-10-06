@@ -20,7 +20,13 @@
         matInput
         placeholder="Escreva seu comentário"
         formControlName="texto"
+        minlength="20"
       ></textarea>
+      <mat-hint
+        align="end"
+        *ngIf="comentarioForm.get('texto')?.value?.length < 20"
+        >Mínimo 20 caracteres</mat-hint
+      >
     </mat-form-field>
     <div>
       <button

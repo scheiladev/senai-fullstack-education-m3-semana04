@@ -3,6 +3,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { CardComponent } from '../../components/card/card.component';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { SugestaoInterface } from '../../intefaces/sugestao.interface';
 import { SugestaoService } from '../../service/sugestao.service';
@@ -32,25 +33,30 @@ export class SugestoesComponent {
   textoPesquisa!: string;
   listaSugestoes: SugestaoInterface[] = [];
 
+  constructor(private toastr: ToastrService) {}
+
   ngOnInit() {
     this.sugestaoService.get().subscribe({
       next: (sugestoes: SugestaoInterface[]) => {
         this.listaSugestoes = sugestoes;
+        this.toastr.success('Sugestões carregadas com sucesso!');
       },
       error: (erro: any) => {
+        this.toastr.error('Nenhuma sugestão encontrada!');
         console.error('Erro: ', erro);
       },
     });
   }
 
   search() {
+    this.toastr.info('Buscando sugestões!');
     if (this.textoPesquisa) {
       this.sugestaoService.get().subscribe((retorno) => {
-        this.listaSugestoes = retorno.filter((sugestao) =>
-          sugestao.titulo
+        this.listaSugestoes = retorno.filter((sugestao) => {
+          return sugestao.titulo
             .toLowerCase()
-            .includes(this.textoPesquisa.toLowerCase())
-        );
+            .includes(this.textoPesquisa.toLowerCase());
+        });
       });
     } else {
       this.sugestaoService.get().subscribe((retorno) => {
@@ -64,10 +70,10 @@ export class SugestoesComponent {
       next: (sugestao: SugestaoInterface) => {
         const dialogRef = this.modal.open(ModalComponent, {
           width: '600px',
-          data: sugestao, // Passa a sugestão completa
+          data: sugestao,
         });
 
-        console.log(sugestao);
+        this.toastr.info('Abrindo sugestão!');
 
         dialogRef
           .afterClosed()
@@ -77,12 +83,13 @@ export class SugestoesComponent {
                 (s) => s.id === result.id
               );
               if (index !== -1) {
-                this.listaSugestoes[index] = result; // Atualiza a sugestão na lista
+                this.listaSugestoes[index] = result;
               }
             }
           });
       },
       error: (error) => {
+        this.toastr.error('Falha ao carregar sugestão');
         console.error('Erro ao carregar a sugestão:', error);
       },
     });

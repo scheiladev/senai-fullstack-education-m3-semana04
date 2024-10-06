@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { SugestaoInterface } from '../../intefaces/sugestao.interface';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,11 +38,12 @@ export class ModalComponent {
   constructor(
     private fb: FormBuilder,
     private sugestaoService: SugestaoService,
+    private toastr: ToastrService,
     private dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public sugestao: SugestaoInterface
   ) {
     this.comentarioForm = this.fb.group({
-      texto: ['', Validators.required],
+      texto: ['', [Validators.required, Validators.minLength(20)]],
     });
 
     if (!this.sugestao.comentarios) {
@@ -50,6 +52,7 @@ export class ModalComponent {
   }
 
   fecharModal(): void {
+    this.toastr.info('Fechando sugestão!');
     this.dialogRef.close();
   }
 
@@ -65,10 +68,12 @@ export class ModalComponent {
         .salvarComentario(this.sugestao.id, novoComentario)
         .subscribe({
           next: (response) => {
+            this.toastr.success('Comentário salvo com sucesso!');
             this.sugestao.comentarios.push(response);
             this.comentarioForm.reset();
           },
           error: (error) => {
+            this.toastr.error('Falha ao salvar comentário');
             console.error('Erro ao salvar o comentário:', error);
           },
         });
